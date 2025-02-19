@@ -66,7 +66,16 @@ app.put('/users/update', function (req, res, next) {
     const avartar = req.body.avartar;
     const id = req.body.id;
     connection.query('UPDATE users SET fname=?,lname=?,username=?,password=?,avartar=? WHERE id =?  ',[fname,lname,username,password,avartar,id] ,function (err, results, fields) { 
-        res.status(200).json(results);
+       // res.status(200).json(results);
+       res.status(200).json({
+        status : '200',
+        message: 'Update',
+        results : results.length,
+        data: {
+            results:results
+        }
+       })
+       
     });
 });
 
